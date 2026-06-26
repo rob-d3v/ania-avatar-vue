@@ -1,0 +1,11 @@
+node_modules
+*.log
+.DS_Store
+.vite
+coverage
+
+# NOTE: dist/ is intentionally COMMITTED (NOT ignored).
+# Committing the built bundle lets jsDelivr / unpkg serve this package straight
+# from GitHub (github:rob-d3v/ania-avatar-vue) without a separate npm publish,
+# and keeps the CDN build self-contained (ania-avatar-core is bundled in).
+# Do not add `dist` below.

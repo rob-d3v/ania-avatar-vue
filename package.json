@@ -1,0 +1,64 @@
+{
+  "name": "ania-avatar-vue",
+  "version": "1.0.0",
+  "description": "Vue 3 wrapper for the Ania animated-avatar player. Mounts an avatar onto a <canvas> and drives lip-sync, actions, commands, TTS/STT/wake-word via the framework-agnostic ania-avatar-core engine.",
+  "type": "module",
+  "license": "MIT",
+  "author": "rob-d3v",
+  "repository": "github:rob-d3v/ania-avatar-vue",
+  "homepage": "https://github.com/rob-d3v/ania-avatar-vue#readme",
+  "bugs": "https://github.com/rob-d3v/ania-avatar-vue/issues",
+  "keywords": [
+    "ania",
+    "avatar",
+    "vue",
+    "vue3",
+    "vtuber",
+    "lip-sync",
+    "tts",
+    "stt",
+    "wake-word",
+    "canvas",
+    "composable",
+    "typescript"
+  ],
+  "sideEffects": false,
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.umd.cjs",
+  "jsdelivr": "./dist/index.umd.cjs",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit -p tsconfig.build.json && vite build && npm run build:types",
+    "build:js": "vite build",
+    "build:types": "vue-tsc -p tsconfig.dts.json && node scripts/emit-dts-entry.mjs",
+    "typecheck": "vue-tsc --noEmit -p tsconfig.build.json",
+    "preview": "vite preview"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3"
+  },
+  "dependencies": {
+    "ania-avatar-core": "github:rob-d3v/ania-avatar-core"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7",
+    "vite-plugin-css-injected-by-js": "^5.0.1",
+    "vue": "^3.5.13",
+    "vue-tsc": "^2.2.0"
+  }
+}

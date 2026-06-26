@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ania-avatar-vue · CDN demo</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, sans-serif;
+        background: radial-gradient(circle at 30% 0%, #1a1a3a, #080810);
+        color: #e6e6f0;
+        min-height: 100vh;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px; }
+      h1 {
+        background: linear-gradient(90deg, #a855f7, #ff1b8d, #00d9ff);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .row { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+      input { flex: 1; min-width: 220px; padding: 8px 10px; border-radius: 8px;
+        border: 1px solid #333; background: #0e0e18; color: #e6e6f0; }
+      button { padding: 8px 14px; border-radius: 8px; border: 1px solid #a855f7;
+        background: #1a1a2e; color: #e6e6f0; cursor: pointer; }
+      button:hover { background: #a855f7; }
+    </style>
+
+    <!-- Vue 3 (global build) MUST load before ania-avatar-vue UMD -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <!-- Local UMD build (or jsDelivr GH path once pushed):
+         https://cdn.jsdelivr.net/gh/rob-d3v/ania-avatar-vue/dist/index.umd.cjs -->
+    <script src="../dist/index.umd.cjs"></script>
+  </head>
+  <body>
+    <div id="app" class="wrap">
+      <h1>ania-avatar-vue (CDN)</h1>
+      <p>UMD global <code>AniaAvatarVue</code> + Vue from jsDelivr.</p>
+
+      <ania-avatar
+        ref="avatar"
+        :width="320"
+        :height="320"
+        :lip-sync-enabled="true"
+        @load="onLoad"
+        @talk-start="status = 'talking'"
+        @action-start="(id) => (status = 'action: ' + id)"
+      ></ania-avatar>
+
+      <div class="row">
+        <input v-model="url" placeholder="https://example.com/avatar.ania" />
+        <button @click="loadUrl">Load</button>
+      </div>
+      <div class="row">
+        <button @click="$refs.avatar.play()">Play</button>
+        <button @click="$refs.avatar.pause()">Pause</button>
+        <button @click="$refs.avatar.setTalking(true)">Talk</button>
+        <button @click="$refs.avatar.setTalking(false)">Stop</button>
+        <button @click="$refs.avatar.runCommand('help')">help</button>
+      </div>
+      <p>status: {{ status }}</p>
+    </div>
+
+    <script>
+      const { createApp } = Vue;
+      createApp({
+        data: () => ({ url: '', status: 'idle' }),
+        methods: {
+          onLoad() { this.status = 'loaded'; },
+          loadUrl() { if (this.url) this.$refs.avatar.load({ url: this.url }); },
+        },
+      })
+        .use(AniaAvatarVue.AniaAvatarPlugin)
+        .mount('#app');
+    </script>
+  </body>
+</html>

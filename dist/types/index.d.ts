@@ -1,0 +1,9 @@
+export { default as AniaAvatar } from './components/AniaAvatar.vue';
+export { default as AvatarChatbot } from './components/AvatarChatbot.vue';
+export { useAniaAvatar } from './composables/useAniaAvatar';
+export type { UseAniaAvatarOptions, UseAniaAvatarReturn, UseAniaAvatarLipSync, ActionsView, } from './composables/useAniaAvatar';
+export { AniaAvatarPlugin, AniaAvatarPlugin as default } from './plugin';
+export type { AniaAvatarPluginOptions } from './plugin';
+export type { AniaAvatarProps, AvatarChatbotProps, AniaAvatarEmits, PlayerPosition, AvatarTheme, LipSyncSustainStyle, TTSProvider, STTProvider, } from './props';
+export { createAniaPlayer, AniaPlayer, AnimationController, Emitter, buildControllerConfig, decryptAniaFile, LipSyncAnalyser, SpeechRecognizer, executeCommand, parseCommandLine, installPostMessageControl, COMMAND_LIST, PluginRegistry, getDefaultRegistry, validatePlugin, BUILTIN_PLUGINS, registerBuiltins, TTS_PROVIDER_TO_PLUGIN, STT_PROVIDER_TO_PLUGIN, fetchLipSyncConfig, fetchActionsConfig, buildOpennessMap, professionalTTSRequest, WakeWordEngine, getWakeWordEngine, isWakeWordSupported, initPiper, preloadPiper, piperSynthesize, getPiperStatus, checkPiperStatus, disposePiper, parseHotkey, matchesHotkey, playActionAudio, calcSpeeds, calculateOptimalSpeeds, getCachedAvatar, setCachedAvatar, deleteCachedAvatar, clearAvatarCache, getCacheStats, AvatarCache, getString, getStringList, createTranslator, availableLocales, hasLocale, DEFAULT_LOCALE, FALLBACK_LOCALE, PLUGIN_KINDS, } from 'ania-avatar-core';
+export type { AniaAvatarData, AniaAnimationData, AnimationControllerConfig, ActionConfig, ActionInfo, LipSyncConfig, LipSyncServerConfig, TTSConfig, TTSResult, PlayerOptions, LoadSource, PlayerEventMap, PlayerEventName, AniaPlayerInstance, PluginKind, PluginContext, TTSEngine, STTEngine, Plugin, CommandContext, CommandResult, CommandDescriptor, Translator, } from 'ania-avatar-core';
